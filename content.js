@@ -1,16 +1,21 @@
-(async () => {
-	const embed = document.querySelector('embed');
-	if (!embed) return;
+// No longer used - logic moved to scripting.executeScript()
 
-	// Get current toggle state from storage
-	const { pdfDarkMode } = await chrome.storage.local.get("pdfDarkMode");
-	const isInverted = pdfDarkMode === true;
 
-	if (isInverted) {
-		embed.style.filter = '';
-		chrome.storage.local.set({ pdfDarkMode: false });
-	} else {
-		embed.style.filter = 'invert(1) hue-rotate(180deg)';
-		chrome.storage.local.set({ pdfDarkMode: true });
-	}
-})();
+// let isDark = false;
+// let hueInvert = true;
+
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//   const embed = document.querySelector('embed');
+//   if (!embed) return;
+
+//   if (request.toggleDarkMode) {
+//     isDark = request.enableDark;
+//     hueInvert = request.hueInvert;
+
+//     if (isDark) {
+//       embed.style.filter = hueInvert ? 'invert(1) hue-rotate(180deg)' : 'invert(1)';
+//     } else {
+//       embed.style.filter = '';
+//     }
+//   }
+// });
